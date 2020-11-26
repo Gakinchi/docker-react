@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,4 +7,14 @@ before_install:
   - docker build -t gakinchi/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run gakinchi/docker-react npm run test -- --coverage
+  - docker run -e CI=true USERNAME/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  environment: "docker-react-env"
+  bucket_name: "elasticbeanstalk-us-east-2-123456789012"
+  bucket_app: "docker-react"
+  on:
+    branch: master
