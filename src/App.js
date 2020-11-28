@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Live change!
+          Changing the web application in small steps at a time.
         </p>
         <a
           className="App-link"
