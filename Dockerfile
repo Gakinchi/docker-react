@@ -12,6 +12,8 @@ RUN npm run build
 
 # Passing the final results from builder to the next phase (Nginx)
 FROM nginx
+# Exposes the container port for AWS Elastic Beanstalk app service to listen to port 80:
+EXPOSE 80
 # copies the build items and Nginx will present the static content after this
 COPY --from=builder /app/build /usr/share/nginx/html
 # P.S no need to start the service manually,
