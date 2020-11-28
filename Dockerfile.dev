@@ -1,10 +1,11 @@
+#Choosing a popular OS for NodeJS (Alpine for efficiency and speed)
 FROM node:alpine
-
+#Changes container work-directory
 WORKDIR '/app'
-
+#Pre-copies the package.json that will mainly be changed when developing
 COPY package.json .
 RUN npm install
-
+#Copies all the files/dependencies
 COPY . .
-
+#Starts the following service in the container
 CMD ["npm", "run", "start"]
